@@ -1,5 +1,7 @@
 package projects;
 
+import projects.pet.Pet;
+
 import java.util.Arrays;
 
 public class Human {
@@ -55,7 +57,7 @@ public class Human {
                 ", surname='" + surname + '\'' +
                 ", year=" + birthDate +
                 ", iq=" + iq +
-                ", pet=" + pet +
+                ", projects.pet=" + pet +
                 ", mother=" + mother.name + " " + mother.surname +
                 ", father=" + father.name +" "+ father.name+
                 ", habits=" + Arrays.toString(nonWorkingActivities) +
