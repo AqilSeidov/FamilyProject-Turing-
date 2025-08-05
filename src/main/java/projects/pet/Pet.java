@@ -11,6 +11,7 @@ public class Pet {
     private String [] habits;
 
     public Pet() {}
+
     public Pet(String species,String nickname){
         this.species=species;
         this.nickname=nickname;
@@ -78,10 +79,16 @@ public class Pet {
     public String toString() {
         return "Pet{" +
                 "species='" + species + '\'' +
-                ", nickname='" + nickname + '\'' +
-                ", age=" + age +
-                ", trickLevel=" + trickLevel +
-                ", habits=" + Arrays.toString(habits) +
+                "| nickname='" + nickname + '\'' +
+                "| age=" + age +
+                "| trickLevel=" + trickLevel +
+                "| habits=" + Arrays.toString(habits) +
                 '}';
+    }
+
+    @Override
+    public void finalize() throws Throwable {
+        System.out.printf("[GC] -> Pet object with nickname: %s is being deleted.%n",nickname);
+        super.finalize();
     }
 }

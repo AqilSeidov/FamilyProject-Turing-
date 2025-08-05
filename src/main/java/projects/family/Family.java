@@ -109,15 +109,35 @@ public class Family {
         return 2 + childCount;
     }
 
+    //Helper Methods
+    private String[] printChildrenNames(){
+        if (childCount == 0) return null;
+
+        String[] names = new String[childCount];
+        for(int i = 0; i < childCount; i++) {
+            names[i] = children[i].getName()+" "+children[i].getSurname();
+        }
+        return names;
+    }
+
+    private String printParentName(Human parent){
+        return parent.getName()+" "+parent.getSurname();
+    }
 
     @Override
     public String toString() {
         return "Family{" +
-                "mother=" + mother +
-                ", father=" + father +
-                ", children=" + Arrays.toString(children) +
-                ", pet=" + pet +
-                ", childCount=" + childCount +
+                "mother=" + printParentName(mother) +
+                "| father=" + printParentName(father) +
+                "| children=" + Arrays.toString(printChildrenNames()) +
+                "| pet=" + pet.getNickname() +
+                "| childCount=" + childCount +
                 '}';
+    }
+
+    @Override
+    public void finalize() throws Throwable {
+        System.out.printf("[GC] -> Family object of %s and %s is being deleted.%n",father.getName(),mother.getName());
+        super.finalize();
     }
 }

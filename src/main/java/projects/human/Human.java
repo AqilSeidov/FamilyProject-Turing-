@@ -1,7 +1,6 @@
 package projects.human;
 
 import projects.family.Family;
-import projects.pet.Pet;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -23,6 +22,7 @@ public class Human {
         this.iq = iq;
         this.family = family;
         this.activities = activities;
+        family.addChild(this);
     }
 
     public Human(String name, String surname, int birthDate) {
@@ -67,15 +67,38 @@ public class Human {
         return Objects.hash(name, surname, birthDate, family);
     }
 
+
+    //Helper Method
+    public String printActivities() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("[");
+        for (int i = 0; i < activities.length; i++) {
+            builder.append(activities[i][0] + "->");
+            builder.append(activities[i][1] + ", ");
+        }
+        builder.delete(builder.lastIndexOf(","), builder.length());
+        builder.append("]");
+        return builder.toString();
+    }
+
+
     @Override
     public String toString() {
         return "Human{" +
                 "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", year=" + birthDate +
-                ", iq=" + iq +
-                ", schedule=" + Arrays.toString(activities) +
+                "| surname='" + surname + '\'' +
+                "| birthDate=" + birthDate +
+                "| iq=" + iq +
+                "| family=" + family +
+                "| activities=" + printActivities() +
                 '}';
     }
+
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.printf("[GC] -> Human object with name: %s %s is being deleted.%n",name,surname);
+        super.finalize();
+    }
+
 
 }
