@@ -5,6 +5,7 @@ import projects.human.Human;
 import projects.pet.Pet;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Family {
     private Human mother;
@@ -70,25 +71,44 @@ public class Family {
         }
 
     }
-    public boolean deleteChild(String childName) {
-        for(int i = 0; i < children.length; i++) {
-            if (childName.equalsIgnoreCase(children[i].getName())){
-                for (int j = i; i < childCount - 1; i++) {
-                    children[j] = children[j + 1];
-                }
-                children[--childCount] = null;
-                return true;
-
-            }
+    public boolean deleteChild(Human child) {
+        for(int i = 0; i < childCount; i++) {
+           if(child.equals(children[i])) {
+               return deleteChild(i);
+           }
         }
         return false;
     }
 
+    public boolean deleteChild(int index) {
+        if (index < 0 || index >= childCount) {
+            return false;
+        }
+        children[index].setFamily(null);
 
+        for(int j = index; j < childCount-1; j++) {
+            children[j] = children[j+1];
+        }
+        children[--childCount] = null;
+        return true;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Family family = (Family) o;
+        return Objects.equals(mother, family.mother) && Objects.equals(father, family.father);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mother, father);
+    }
 
     public int countFamily() {
         return 2 + childCount;
     }
+
 
     @Override
     public String toString() {
