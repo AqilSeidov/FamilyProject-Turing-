@@ -4,6 +4,7 @@ import projects.family.Family;
 import projects.pet.Pet;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Human {
     private String name;
@@ -82,6 +83,18 @@ public class Human {
 
     public void setFamily(Family family) {
         this.family = family;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Human human = (Human) o;
+        return birthDate == human.birthDate && Objects.equals(name, human.name) && Objects.equals(surname, human.surname) && Objects.equals(family, human.family);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surname, birthDate, family);
     }
 
     @Override
