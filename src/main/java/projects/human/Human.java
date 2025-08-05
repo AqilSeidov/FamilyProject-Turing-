@@ -1,5 +1,6 @@
 package projects.human;
 
+import projects.family.Family;
 import projects.pet.Pet;
 
 import java.util.Arrays;
@@ -9,7 +10,7 @@ public class Human {
     private String surname;
     private int birthDate;
     private int iq;
-    Family family;
+    private Family family;
     private String[][] nonWorkingActivities;
 
     public Human() {}
