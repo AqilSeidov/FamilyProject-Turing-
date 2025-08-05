@@ -15,11 +15,11 @@ public class Pet {
         this.species=species;
         this.nickname=nickname;
     }
-    public Pet(String species,String nickname,int age,int tricklevel,String [] habits){
+    public Pet(String species,String nickname,int age,int trickLevel,String [] habits){
         this.species=species;
         this.nickname=nickname;
         this.age=age;
-        this.trickLevel=tricklevel;
+        this.trickLevel=trickLevel;
         this.habits=habits;
 
     }
@@ -80,7 +80,7 @@ public class Pet {
                 "species='" + species + '\'' +
                 ", nickname='" + nickname + '\'' +
                 ", age=" + age +
-                ", tricklevel=" + trickLevel +
+                ", trickLevel=" + trickLevel +
                 ", habits=" + Arrays.toString(habits) +
                 '}';
     }
