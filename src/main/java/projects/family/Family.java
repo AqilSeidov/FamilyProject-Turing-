@@ -132,7 +132,7 @@ public class Family {
                 "mother=" + printParentName(mother) +
                 "| father=" + printParentName(father) +
                 "| children=" + Arrays.toString(printChildrenNames()) +
-                "| pet=" + pet.getNickname() +
+                "| pet=" + (pet != null && pet.getNickname() != null ? pet.getNickname() : "None") +
                 "| childCount=" + childCount +
                 '}';
     }
