@@ -17,7 +17,7 @@ public class Family {
     public Family(Human mother, Human father) {
         this.mother = mother;
         this.father = father;
-        this.children = new Human[10];
+        this.children = new Human[0];
         this.childCount = 0;
     }
 
@@ -62,8 +62,9 @@ public class Family {
     }
 
     public boolean addChild(Human child) {
-        if (childCount < children.length && child != null) {
-            this.children[childCount++] = child;
+        if (child != null) {
+            children = Arrays.copyOf(children, ++childCount);
+            children[childCount-1] = child;
             child.setFamily(this);
             return true;
         }
@@ -71,8 +72,8 @@ public class Family {
             System.out.println("Couldn't add the child.");
             return false;
         }
-
     }
+
     public boolean deleteChild(Human child) {
         for(int i = 0; i < childCount; i++) {
            if(child.equals(children[i])) {
@@ -113,7 +114,7 @@ public class Family {
 
     //Helper Methods
     private String[] printChildrenNames(){
-        if (childCount == 0) return null;
+        if (childCount == 0) return new String[0];
 
         String[] names = new String[childCount];
         for(int i = 0; i < childCount; i++) {
