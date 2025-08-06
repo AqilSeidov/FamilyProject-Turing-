@@ -61,13 +61,15 @@ public class Family {
         this.mother = mother;
     }
 
-    public void addChild(Human child) {
-        if (childCount < children.length) {
+    public boolean addChild(Human child) {
+        if (childCount < children.length && child != null) {
             this.children[childCount++] = child;
             child.setFamily(this);
+            return true;
         }
         else {
-            System.out.println("I couldn't add a child.");
+            System.out.println("Couldn't add the child.");
+            return false;
         }
 
     }
