@@ -24,7 +24,7 @@ class FamilyTest {
         family = new Family(mother, father);
         child1 = new Human("Alice", "Doe", 2010);
         child2 = new Human("Bob", "Doe", 2012);
-        pet = new Pet(Species.DOG.name(), "Freddy");
+        pet = new Pet(Species.DOG, "Freddy");
         family.setPet(pet);
     }
 

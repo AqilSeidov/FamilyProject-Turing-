@@ -14,7 +14,7 @@ public class Main {
 
         for(int i =0; i<1000000; i++){
             new Human("Aqil","Saidov",2006);
-            new Pet(Species.DOG.name(), "Bright");
+            new Pet(Species.DOG, "Bright");
             new Family(dad,mom);
         }
     }

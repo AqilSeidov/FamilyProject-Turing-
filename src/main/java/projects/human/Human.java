@@ -4,6 +4,7 @@ import projects.family.Family;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.Random;
 
 public class Human {
     private String name;
@@ -79,6 +80,49 @@ public class Human {
         builder.delete(builder.lastIndexOf(","), builder.length());
         builder.append("]");
         return builder.toString();
+    }
+
+
+    public void greetPet(){
+        if(this.family == null || this.family.getPet() == null){
+            System.out.println("Couldn't find a pet to meet");
+            return;
+        }else{
+            System.out.println("Hello, " + family.getPet().getNickname());
+        }
+    }
+
+
+    public void describePet(){
+        if(this.family == null || this.family.getPet() == null){
+            System.out.println("Couldn't find a pet to describe");
+            return;
+        }
+        else{
+            String isSly = family.getPet().getTrickLevel() > 50 ? "very sly" : "almost not sly";
+            System.out.printf("I have an %s is %d years old, it is %s. %n",family.getPet().getSpecies(),family.getPet().getAge(),isSly);
+        }
+    }
+
+
+    public boolean feedPet(boolean isItTimeToFeed){
+        if(isItTimeToFeed && this.family != null && this.family.getPet() != null){
+            System.out.println("Hmm... I will feed " + family.getPet().getNickname());
+            return true;
+
+        }else{
+            Random rand = new Random();
+            int randResult = rand.nextInt(0,100);
+
+            if(randResult < family.getPet().getTrickLevel()){
+                System.out.println("Hmm... I will feed " + family.getPet().getNickname());
+                return true;
+
+            }else{
+                System.out.printf("I think %s isn't hungry.%n",family.getPet().getNickname());
+                return false;
+            }
+        }
     }
 
 
