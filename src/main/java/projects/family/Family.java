@@ -21,12 +21,16 @@ public class Family implements HumanCreator {
     private static final String[] boyNames = {"Aqil", "Saleh", "Orxan", "Tural"};
     private static final String[] girlNames = {"Aysel", "Nigar", "Zeyneb", "Zehra"};
     private static final Random random = new Random();
+
+
     public Family(Human mother, Human father) {
+        checkArguments(mother, father);
         this.mother = mother;
         this.father = father;
         this.children = new Human[0];
         this.childCount = 0;
     }
+
 
     public Human getMother() {
         return mother;
@@ -67,6 +71,8 @@ public class Family implements HumanCreator {
     public void setMother(Human mother) {
         this.mother = mother;
     }
+
+
     public void bornChild(){
         boolean isBoy = random.nextBoolean();
 
@@ -82,7 +88,7 @@ public class Family implements HumanCreator {
         } else {
             child = new Woman(name,surname , birthDate, iq, this);
         }
-         addChild(child);
+
     }
 
     public boolean addChild(Human child) {
@@ -149,6 +155,12 @@ public class Family implements HumanCreator {
 
     private String printParentName(Human parent){
         return parent.getName()+" "+parent.getSurname();
+    }
+
+    public void checkArguments(Human mother, Human father) {
+        if (mother == null || father == null) {
+            throw new IllegalArgumentException("Any one of the arguments is null");
+        }
     }
 
     @Override
