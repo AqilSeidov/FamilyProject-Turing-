@@ -2,18 +2,25 @@ package projects.family;
 
 
 import projects.human.Human;
+import projects.human.HumanCreator;
+import projects.human.Man;
+import projects.human.Woman;
 import projects.pet.Pet;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.Random;
 
-public class Family {
+public class Family implements HumanCreator {
     private Human mother;
     private Human father;
     private Human[] children;
     private Pet pet;
     private int childCount;
-
+    private static final String[] boyNames = {"Aqil", "Saleh", "Orxan", "Tural"};
+    private static final String[] girlNames = {"Aysel", "Nigar", "Zeyneb", "Zehra"};
+    private static final Random random = new Random();
     public Family(Human mother, Human father) {
         this.mother = mother;
         this.father = father;
@@ -59,6 +66,26 @@ public class Family {
 
     public void setMother(Human mother) {
         this.mother = mother;
+    }
+    public void bornChild(){
+        boolean isBoy = random.nextBoolean();
+
+        String name = isBoy ? boyNames[random.nextInt(boyNames.length)] : girlNames[random.nextInt(girlNames.length)];
+        Human child;
+
+         String surname=this.father.getSurname();
+         LocalDate today = LocalDate.now();
+         String date = today.toString();
+         String numericDate = date.replace("-", "");
+         int birthDate = Integer.parseInt(numericDate);
+         int iq=(mother.getIq()+father.getIq())/2;
+
+        if (isBoy) {
+            child = new Man(name,surname, birthDate, iq, this, new String[7][2]);
+        } else {
+            child = new Woman(name,surname , birthDate, iq, this, new String[7][2]);
+        }
+         addChild(child);
     }
 
     public boolean addChild(Human child) {
