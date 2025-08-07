@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import projects.family.Family;
 import projects.pet.Pet;
 import projects.pet.Species;
+import projects.pet.sub_classes.DomesticCat;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,7 +23,7 @@ class HumanTest {
         father = new Human("John", "Doe", 1975);
         family = new Family(mother, father);
         human = new Human("Roxy", "Doe", 2000);
-        pet = new Pet(Species.CAT,"Felix");
+        pet = new DomesticCat("Felix");
     }
 
 

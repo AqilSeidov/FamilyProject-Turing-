@@ -2,7 +2,7 @@ package projects.pet;
 
 import java.util.Arrays;
 
-public class Pet {
+public abstract class Pet {
 
     private Species species;
     private String nickname;
@@ -12,12 +12,10 @@ public class Pet {
 
     public Pet() {}
 
-    public Pet(Species species,String nickname){
-        this.species=species;
+    public Pet(String nickname){
         this.nickname=nickname;
     }
-    public Pet(Species species,String nickname,int age,int trickLevel,String [] habits){
-        this.species=species;
+    public Pet(String nickname,int age,int trickLevel,String [] habits){
         this.nickname=nickname;
         this.age=age;
         this.trickLevel=trickLevel;
@@ -62,14 +60,10 @@ public class Pet {
     }
 
     public void eat(){
-        System.out.println("Pet eating");
+        System.out.println("Pet is eating");
     }
-    public void respond(){
-        System.out.printf("Hello owner .I am- %s .I miss you", nickname);
-    }
-    public void foul(){
-        System.out.println("I need to cover it up");
-    }
+
+    public abstract void respond();
 
     @Override
     public String toString() {

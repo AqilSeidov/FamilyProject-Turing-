@@ -9,7 +9,7 @@ public enum Species {
     GUINEA_PIG,
     PARROT,
     CANARY,
-    GOLDFISH,
+    FISH,
     TURTLE,
     FERRET,
     CHICKEN,
@@ -20,6 +20,8 @@ public enum Species {
     SHEEP,
     GOAT,
     COW,
-    DONKEY
+    DONKEY,
+    ROBOCAT,
+    UNKNOWN
 }
 
