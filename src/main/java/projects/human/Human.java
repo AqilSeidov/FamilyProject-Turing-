@@ -45,12 +45,24 @@ public class Human {
     public int getIq() { return iq;}
     public void setIq(int iq) { this.iq = iq;}
 
-    public String[][] getNonWorkingActivities() {
+    public String[][] getActivities() {
         return activities != null ? Arrays.copyOf(activities, activities.length) : null;
     }
 
-    public void setNonWorkingActivities(String[][] nonWorkingActivities) {
-        this.activities = activities != null ? Arrays.copyOf(activities, activities.length) : null;
+    public void setActivities(String[][] nonWorkingActivities) {
+        if (nonWorkingActivities ==null){
+            this.activities = null;
+            return;
+        }
+
+        this.activities = new String[nonWorkingActivities.length][];
+
+        for (int i = 0; i < nonWorkingActivities.length; i++) {
+            if (nonWorkingActivities[i] != null) {
+                this.activities[i] = Arrays.copyOf(nonWorkingActivities[i],
+                        nonWorkingActivities[i].length);
+            }
+        }
     }
 
     public Family getFamily() { return family;}
@@ -110,7 +122,7 @@ public class Human {
             System.out.println("Hmm... I will feed " + family.getPet().getNickname());
             return true;
 
-        }else{
+        }else if(this.family != null && this.family.getPet() != null){
             Random rand = new Random();
             int randResult = rand.nextInt(0,100);
 
@@ -122,6 +134,9 @@ public class Human {
                 System.out.printf("I think %s isn't hungry.%n",family.getPet().getNickname());
                 return false;
             }
+        }else{
+            System.out.println("Couldn't find a pet to feed");
+            return false;
         }
     }
 

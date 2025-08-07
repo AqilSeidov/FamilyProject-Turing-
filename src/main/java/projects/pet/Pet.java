@@ -25,9 +25,7 @@ public class Pet {
 
     }
 
-    public Species getSpecies() {
-        return species;
-    }
+    public Species getSpecies() {return species;}
 
     public void setSpecies(Species species) {
         this.species = species;
@@ -57,9 +55,7 @@ public class Pet {
         this.trickLevel = trickLevel;
     }
 
-    public String[] getHabits() {
-        return habits;
-    }
+    public String[] getHabits() {return habits;}
 
     public void setHabits(String[] habits) {
         this.habits = habits;
