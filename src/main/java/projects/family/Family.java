@@ -74,16 +74,13 @@ public class Family implements HumanCreator {
         Human child;
 
          String surname=this.father.getSurname();
-         LocalDate today = LocalDate.now();
-         String date = today.toString();
-         String numericDate = date.replace("-", "");
-         int birthDate = Integer.parseInt(numericDate);
+         int birthDate = LocalDate.now().getYear();
          int iq=(mother.getIq()+father.getIq())/2;
 
         if (isBoy) {
-            child = new Man(name,surname, birthDate, iq, this, new String[7][2]);
+            child = new Man(name,surname, birthDate, iq, this);
         } else {
-            child = new Woman(name,surname , birthDate, iq, this, new String[7][2]);
+            child = new Woman(name,surname , birthDate, iq, this);
         }
          addChild(child);
     }

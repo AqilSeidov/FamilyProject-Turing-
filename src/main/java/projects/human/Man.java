@@ -9,6 +9,17 @@ public final class Man extends Human {
         super(name, surname, birthDate, iq, family, activities);
 
     }
+    public Man(String name, String surname, int birthDate) {
+        super(name, surname, birthDate);
+
+    }
+    public Man(String name, String surname, int birthDate, int iq, Family family ) {
+       super(name , surname, birthDate, iq, family);
+    }
+
+
+    public Man() {}
+
 
     public void greetPet(){
         if(this.getFamily() == null || this.getFamily().getPet() == null){

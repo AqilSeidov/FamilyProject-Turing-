@@ -25,12 +25,21 @@ public class Human {
         this.activities = activities;
         family.addChild(this);
     }
+    public Human(String name, String surname, int birthDate, int iq, Family family ) {
+        this.name = name;
+        this.surname = surname;
+        this.birthDate = birthDate;
+        this.iq = iq;
+        this.family = family;
+        family.addChild(this);
+    }
 
     public Human(String name, String surname, int birthDate) {
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
     }
+
 
 
     public String getName() { return name;}
