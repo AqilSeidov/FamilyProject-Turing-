@@ -2,11 +2,19 @@ package projects.human;
 
 import projects.family.Family;
 
-public final class Woman extends Human  {
+public final class Woman extends Human {
 
     public Woman(String name, String surname, int birthDate, int iq, Family family, String[][] activities) {
         super(name, surname, birthDate, iq, family, activities);
 
+    }
+    public Woman(String name, String surname, int birthDate) {
+        super(name, surname, birthDate);
+    }
+    public Woman() {}
+
+    public Woman(String name, String surname, int birthDate, int iq, Family family ) {
+        super(name , surname, birthDate, iq, family);
     }
 
     public void greetPet(){
@@ -20,6 +28,4 @@ public final class Woman extends Human  {
     public void makeup() {
         System.out.println("I'm doing makeup");
     }
-
-
 }
